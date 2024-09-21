@@ -1,58 +1,25 @@
-const express = require("express");
+import express from "express";
+import { database } from "./Database.js";
+import router from "./routes/user-Routes.js";
+import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const app = express();
-require("./db/connection");
-const Product = require("./module/product");
-const User = require("./module/user")
-const cors = require("cors");
-app.use(express.json());
+
 app.use(cors());
+app.use(express.json());
+app.use("/api", router);
 
-app.post("/" , async (req , res) =>{
-    try {
-        let storedata = new Product({
-            name:req.body.name,
-            description: req.body.description,
-            value:req.body.value,
-            type:req.body.type,
-            price:req.body.price,
-            img:req.body.img
-        });
+app.get("/", (req, res) => {
+  res.send("Namaste India");
+}); 
 
-        let savedata = await storedata.save();
-        console.log(savedata)
-        res.status(200).send(savedata);
-    } catch (error) {
-        console.log("error");
-        res.status(400).send();  
-    }
-})
-app.get("/", async (req , res)=>{
-    try {
-        let apidata = await Product.find();
-        res.send(apidata);
-    } catch (error) {
-        console.log("error");
-    }
-   
-})
+database();
 
-app.post("/signup" , async(req , res)=>{
-    try {
-        let storedata = new User({
-            name:req.body.name,
-            email: req.body.email,
-            password:req.body.password,
-            location:req.body.location,
-        });
+const port = process.env.PORT || 8000;
 
-        let savedata = await storedata.save();
-        console.log(savedata)
-        res.status(200).send(savedata);
-    } catch (error) {
-        console.log("error");
-        res.status(400).send();  
-    }
-})
-app.listen(3002, ()=>{
-    console.log("connection su ccesfull..");
+app.listen(port, () => {
+  console.log(`Server is Running on http://localhost:${port}`);
 });
