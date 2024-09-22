@@ -9,7 +9,7 @@ export const API_CHEKOUT_ORDER =api+
   "/checkout";
 export const API_GET_KEY =api+ "/getkey";
 export const API_VALIDATE =api+ "/validate";
-export const API_LOGIN =api+ "/login";
+export const API_LOGIN =api+ "/login"; 
 export const API_SIGNUP =api+ "/signup";
 export const API_GET_ORDER =api+"/myOrder";
 export const API_CLEAR_ORDER =api+
