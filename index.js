@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("build")); 
+// app.use(express.static("build")); 
 app.use("/api", router);
 
 app.get("/test", (req, res) => {
@@ -21,6 +21,6 @@ database();
 
 const port = process.env.PORT || 8000;
 
-app.listen(port, () => {
+app.listen(port,"0.0.0.0", () => {
   console.log(`Server is Running on http://localhost:${port}`);
 });
