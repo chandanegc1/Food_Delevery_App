@@ -18,6 +18,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("data");
     navigate("/signup");
   };
 

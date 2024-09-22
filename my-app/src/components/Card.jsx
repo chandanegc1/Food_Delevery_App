@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { handleAddToCart } from "../App/cartReducer";
+import { toast } from "react-toastify";
 
 const Card = ({ items, option }) => {
   const [size, setSize] = useState("");
@@ -54,8 +55,13 @@ const Card = ({ items, option }) => {
         <h3 className="text-xl font-semibold">₹{finalPrice}/-</h3>
         <button
           className="bg-red-700 rounded py-2 text-white font-semibold"
-          onClick={() =>
-            dispatch(handleAddToCart({ qty, finalPrice, size, name, _id }))
+          onClick={() =>{
+            if(localStorage.getItem("data")==="login")
+            dispatch(handleAddToCart({ qty, finalPrice, size, name, _id }));
+            else{
+              toast.error("Login please....");
+            }
+          }
           }
         >
           Add To Cart

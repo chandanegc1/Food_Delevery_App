@@ -36,6 +36,8 @@ const Login = () => {
         localStorage.setItem("authToken", response.data.authToken);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         toast.success("Logged In ✅");
+        localStorage.setItem("data" , "login");
+        console.log(localStorage.getItem("data"));
         navigate("/");
       }
     } catch (err) {
