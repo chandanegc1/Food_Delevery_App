@@ -10,7 +10,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-// app.use(express.static("build")); 
+app.use(express.static("build")); 
 app.use("/api", router);
 
 app.get("/test", (req, res) => {
