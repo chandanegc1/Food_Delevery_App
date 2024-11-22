@@ -1,4 +1,4 @@
-const api ="https://food-delivery-egc.up.railway.app/api"
+const api ="https://food-egc.up.railway.app/api"
 // const api ="http://localhost:8000/api"
 
 export const API_GET_ITEMS =api+
